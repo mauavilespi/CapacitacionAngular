@@ -1,0 +1,10 @@
+<p>contador works!</p>
+<div *ngIf="showContador">
+  <h3>Contador: {{valorInicial}}</h3>
+  <button  mat-flat-button color="primary" (click)="aumentarContador(8)">Aumentar</button>
+  <button mat-flat-button color="accent" (click)="disminuirContador()">Disminuir</button>
+  <button (click)="aumentarContadorPadre()">Aumentar Desde Padre</button>
+</div>
+<p></p>
+<button *ngIf="showContador" (click)="switchContador()" mat-flat-button color="warn">Eliminar Contador</button>
+<button *ngIf="!showContador" (click)="switchContador()" mat-flat-button color="primary">Mostrar Contador</button>
