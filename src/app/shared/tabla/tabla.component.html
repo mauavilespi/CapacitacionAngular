@@ -10,14 +10,25 @@
   </tr> -->
 
   <tr *ngFor="let elemento of listaVacia">
-    <td>{{elemento.id}}</td>
-    <td>{{elemento.address.suite}}</td>
+    <!-- Elementos fijos -->
+    <!-- <td>{{elemento.id}}</td>
+    <td>{{elemento.address.suite}}</td> -->
+
+    <!-- Elementos dinámicos -->
+    <td *ngFor="let nombre of columnas">{{elemento[nombre]}}</td>
   </tr>
 
 
 </table>
 
-<button (click)="getUsuarios()">Realizar Petición</button>
+<button (click)="getUsuarios()">Realizar Petición (Users)</button>
 
-<button (click)="showUsersTable()">Mostrar Información</button>
+<button (click)="getAlbums()">Realizar Petición (Albums)</button>
+
+
+<button (click)="showUsersTable()">Mostrar Información(Users)</button>
+
+<button (click)="showAlbumsTable()">Mostrar Información(Albums)</button>
+
+
 

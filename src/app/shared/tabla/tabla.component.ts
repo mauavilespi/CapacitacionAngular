@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TablaService } from '../tabla.service';
 import { User } from '../interfaces/users.interfaces';
+import { Album } from '../interfaces/albums.interfaces';
 
 interface Proveedor {
   id: number,
@@ -16,8 +17,12 @@ interface Proveedor {
 
 export class TablaComponent {
 
-  public listaVacia: User[] = [];
+  //! Propiedades importantes
+  public listaVacia: any[] = [];
+  public columnas: string[] = ["ID-2", "Proveedor"];
+
   public listaUsuario: User[] = [];
+  public listaAlbum: Album[] = [];
 
   constructor( private tablaService: TablaService ) { }
 
@@ -33,8 +38,38 @@ export class TablaComponent {
 
   }
 
+  getAlbums(){
+    console.log("Petición Realizada");
+
+    this.tablaService
+    .getAlbumsService()
+    .subscribe((response) => {
+      console.log(response);
+      this.listaAlbum = response;
+    })
+
+  }
+
   showUsersTable() {
     this.listaVacia = this.listaUsuario;
+
+    //! Obtener las propiedades del objeto
+    let columnasObjeto = Object.keys(this.listaVacia[0]);
+    console.log(columnasObjeto);
+
+    //! Utilizar el arreglo de propiedades en nuestra tabla
+    this.columnas = columnasObjeto;
+  }
+
+  showAlbumsTable() {
+    this.listaVacia = this.listaAlbum;
+
+    //! Obtener las propiedades del objeto
+    let columnasObjeto = Object.keys(this.listaVacia[0]);
+    console.log(columnasObjeto);
+
+    //! Utilizar el arreglo de propiedades en nuestra tabla
+    this.columnas = columnasObjeto;
   }
 
 
@@ -55,7 +90,6 @@ export class TablaComponent {
     console.log(this.listaProovedores);
   }
 
-  public columnas: string[] = ["ID-2", "Proveedor"];
 
   public elementos: string[] = ["A", "B", "C", "D"];
 
