@@ -18,6 +18,24 @@ export class TablaService {
     return this.http.get<Album[]>('https://jsonplaceholder.typicode.com/albums');
   }
 
+  public getUsuariosServicePromise(): Promise<any> {
+    return new Promise( (resolve, reject) => {
+      this.http.get<User[]>('https://jsonplaceholder.typicode.com/users')
+      .subscribe((response) => {
+        resolve(response);
+      });
+    } )
+  }
+
+  public getAlbumsServicePromise(): Promise<any> {
+    return new Promise( (resolve, reject) => {
+      this.http.get<Album[]>('https://jsonplaceholder.typicode.com/albums')
+      .subscribe((response) => {
+        resolve(response);
+      });
+    } )
+  }
+
 
   // public getProveedoresService() {
   //   return this.http.get('https://jsonplaceholder.typicode.com/users');

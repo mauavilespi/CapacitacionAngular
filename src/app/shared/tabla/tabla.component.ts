@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TablaService } from '../tabla.service';
 import { User } from '../interfaces/users.interfaces';
 import { Album } from '../interfaces/albums.interfaces';
@@ -15,7 +15,7 @@ interface Proveedor {
 })
 
 
-export class TablaComponent {
+export class TablaComponent implements OnInit {
 
   //! Propiedades importantes
   public listaVacia: any[] = [];
@@ -25,6 +25,14 @@ export class TablaComponent {
   public listaAlbum: Album[] = [];
 
   constructor( private tablaService: TablaService ) { }
+  async ngOnInit() {
+    console.log("Componente iniciado");
+    //this.getUsuarios();
+    await this.getUsuariosPromise();
+    this.showUsersTable();
+    await this.getAlbumsPromise();
+    this.showAlbumsTable();
+  }
 
   getUsuarios(){
     console.log("Petición Realizada");
@@ -38,6 +46,13 @@ export class TablaComponent {
 
   }
 
+  async getUsuariosPromise(){
+    console.log("Promesa Realizada");
+
+    this.listaUsuario = await this.tablaService.getUsuariosServicePromise();
+
+  }
+
   getAlbums(){
     console.log("Petición Realizada");
 
@@ -47,6 +62,14 @@ export class TablaComponent {
       console.log(response);
       this.listaAlbum = response;
     })
+
+  }
+
+  async getAlbumsPromise(){
+    console.log("Promesa Albums Realizada");
+
+    this.listaAlbum = await this.tablaService.getAlbumsServicePromise();
+
 
   }
 
