@@ -1,0 +1,32 @@
+<h1>Nueva Tabla</h1>
+<table>
+
+    <tr>
+      <th *ngFor="let columna of columnas">{{columna}}</th>
+    </tr>
+  
+    <!-- <tr *ngFor="let col of info">
+        <td *ngFor="let columna of columnas">{{columna[col]}}</td>
+    </tr> -->
+
+    <tr *ngFor="let persona of info">
+      <td>{{persona.id}}</td>
+      <td>{{persona.nombre}}</td>
+      <td>{{persona.edad}}</td>
+    </tr>
+  
+  
+  </table>
+  
+  <button >Realizar Petición (Users)</button>
+  
+  <button >Realizar Petición (Albums)</button>
+  
+  
+  <button>Mostrar Información(Users)</button>
+  
+  <button>Mostrar Información(Albums)</button>
+  
+  
+  
+  
