@@ -1,0 +1,17 @@
+<h1>Nueva tabla</h1>
+<table>
+
+  <tr>
+    <th *ngFor="let columna of columnas">{{columna | uppercase}}</th>
+  </tr>
+
+
+  <tr *ngFor="let elemento of informacion">
+
+
+    <!-- Elementos dinámicos -->
+    <td *ngFor="let columna of columnas">{{elemento[columna]}}</td>
+  </tr>
+
+
+</table>
