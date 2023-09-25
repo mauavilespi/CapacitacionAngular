@@ -7,17 +7,25 @@ import { ContadorModule } from './contador/contador.module';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { AlbumComponent } from './album/album.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { PersonasComponent } from './personas/personas.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AlbumComponent,
+    UsuariosComponent,
+    PersonasComponent
   ],
   imports: [
     BrowserModule,
     ContadorModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

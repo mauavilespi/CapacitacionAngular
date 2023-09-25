@@ -1,0 +1,9 @@
+<p>*** NuevaTabla! **</p>
+<table>
+  <tr>
+  </tr>
+  <th *ngFor="let columna of columnas">{{columna}}</th>
+  <tr *ngFor="let elemento of informacion">
+    <td *ngFor="let columna of columnas">{{elemento[columna]}}</td>
+  </tr>
+</table>
